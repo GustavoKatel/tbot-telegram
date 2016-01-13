@@ -1,5 +1,5 @@
-# tbot
-Just another twitter bot (using markov chain)
+# tbot-telegram
+Just another telegram bot (using markov chain)
 
 ## Configuration
 
