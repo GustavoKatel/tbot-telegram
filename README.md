@@ -4,11 +4,7 @@ Just another twitter bot (using markov chain)
 ## Configuration
 
     config = {
-      CONSUMER_KEY: 'CONSUMER_KEY',
-      CONSUMER_SECRET: 'CONSUMER_SECRET',
-
-      ACCESS_TOKEN: 'ACCESS_TOKEN',
-      ACCESS_TOKEN_SECRET: 'ACCESS_TOKEN_SECRET',
+      token: 'TELEGRAM_BOT_TOKEN',
 
       MARKOV_ORDER: 3,
 
@@ -22,10 +18,7 @@ Just another twitter bot (using markov chain)
 
     var bot = new Bot(config);
 
-  - `CONSUMER_KEY` get from [Twitter apps website](https://apps.twitter.com/)
-  - `CONSUMER_SECRET` get from [Twitter apps website](https://apps.twitter.com/)
-  - `ACCESS_TOKEN` get from [Twitter apps website](https://apps.twitter.com/)
-  - `ACCESS_TOKEN_SECRET` get from [Twitter apps website](https://apps.twitter.com/)
+  - `token` get from [Telegram Bots](https://core.telegram.org/bots)
 
   - `MARKOV_ORDER` the number of words in each node of the markov chains
 
@@ -42,13 +35,10 @@ Just another twitter bot (using markov chain)
 
 Emitted each after processing an entry in the corpus
 
-### onTweet( function(onTweet (tweet, hasMention) )
+### on( 'message', function(message){} )
 
-Emitted when there's a new tweet in the bot's timeline
-
-### onDirectMessaage( function(msg) )
-
-Emitted when there's a new direct message
+Emitted when there's a new update in the bot's queue
+See [Telegram Bots' Message type](https://core.telegram.org/bots/api#message)
 
 ## Util methods
 
@@ -57,9 +47,19 @@ Emitted when there's a new direct message
 Generates new text based on `input`. If `input is empty, generates
 randomically a new text
 
-### Bot.post(text, replyId) - Promise()
+### Bot.sendMessage(toId, replyToMsgId, msg) - Promise()
 
-Post a tweet with text `text` and mark it as a reply to the status id `replyId`
+Send a message with text `msg` to the chat id `toId` and in reply to the message id `replyToMsgId` (if available)
+You can also use the following scheme
+
+    Bot.sendMessage(toId, msg)
+
+### Bot.sendAudio(toId, replyToMsgId, filePath) - Promise()
+
+Send a message with the audio file `filePath` to the chat id `toId` and in reply to the message id `replyToMsgId` (if available)
+You can also use the following scheme
+
+    Bot.sendAudio(toId, filePath)
 
 ### Bot.humanDelay(callback)
 
