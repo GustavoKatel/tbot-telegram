@@ -1,6 +1,8 @@
 # tbot-telegram
 Just another telegram bot (using markov chain)
 
+Based on [tbot](https://github.com/GustavoKatel/tbot)
+
 ## Configuration
 
     config = {
